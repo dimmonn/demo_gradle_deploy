@@ -28,8 +28,18 @@ task deploy {
     }
 }
 
+task stop {
+    doLast {
+        println "Stopping..."
+    }
+}
+
 tasks.named('deploy').configure {
     dependsOn 'runDockerCompose'
+}
+
+tasks.named('stop').configure {
+    dependsOn 'stopDockerCompose'
 }
 
 
