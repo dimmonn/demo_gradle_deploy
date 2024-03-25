@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.4'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.uj.demo'
+version = '0.0.1-SNAPSHOT'
+
+task compileAndTest(type: GradleBuild) {
+    tasks = ['clean', 'test', 'build']
+}
+
+
+task runDockerCompose(type: Exec, dependsOn: compileAndTest) {
+    workingDir '/Users/dpolishchuk/Downloads/demo_gradle_deploy'
+    commandLine 'docker-compose', 'up', '-d'
+}
+
+task stopDockerCompose(type: Exec) {
+    workingDir '/Users/dpolishchuk/Downloads/demo_gradle_deploy'
+    commandLine 'docker-compose', 'stop'
+}
+
+task deploy {
+    doLast {
+        println "Deploying..."
+    }
+}
+
+tasks.named('deploy').configure {
+    dependsOn 'runDockerCompose'
+}
+
+
+java {
+    sourceCompatibility = '17'
+}
+jar {
+    archiveClassifier = ''
+    enabled = false
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'com.h2database:h2'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.projectlombok:lombok'
+    implementation 'mysql:mysql-connector-java:8.0.27'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
