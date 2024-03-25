@@ -1,20 +1,25 @@
 package com.uj.demo.demo.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Club {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Getter
     private String name;
+    @Getter
     private String address;
+    @Getter
     private String openingHours;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Event> events = new ArrayList<>();
+    private final List<Event> events = new ArrayList<>();
 
     public Club() {
     }
@@ -33,22 +38,6 @@ public class Club {
 
     public void setOpeningHours(String openingHours) {
         this.openingHours = openingHours;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getOpeningHours() {
-        return openingHours;
     }
 
     public Club(Long id, String name, String address, String openingHours) {

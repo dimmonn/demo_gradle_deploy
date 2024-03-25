@@ -1,21 +1,21 @@
 package com.uj.demo.demo.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Coach {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Getter
     private String name;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Event> events = new ArrayList<>();
+    private final List<Event> events = new ArrayList<>();
 
     public Coach() {
     }
@@ -33,11 +33,4 @@ public class Coach {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
 }

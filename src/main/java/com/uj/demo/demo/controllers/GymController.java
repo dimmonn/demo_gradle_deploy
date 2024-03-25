@@ -3,7 +3,6 @@ package com.uj.demo.demo.controllers;
 import com.uj.demo.demo.models.Club;
 import com.uj.demo.demo.services.GymService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

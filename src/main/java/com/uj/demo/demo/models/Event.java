@@ -1,10 +1,9 @@
 package com.uj.demo.demo.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Getter;
 
+@Getter
 @Entity
 public class Event {
     @Id
@@ -36,22 +35,6 @@ public class Event {
 
     public void setClub(Club club) {
         this.club = club;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Coach getCoach() {
-        return coach;
-    }
-
-    public Club getClub() {
-        return club;
     }
 
     public Event(Long id, String name, Coach coach, Club club) {
