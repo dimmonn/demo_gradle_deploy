@@ -14,7 +14,7 @@ task compileAndTest(type: GradleBuild) {
 
 task runDockerCompose(type: Exec, dependsOn: compileAndTest) {
     workingDir '.'
-    commandLine 'docker-compose', 'up', '--build'
+    commandLine 'docker-compose', 'up', '--build', '-d'
 }
 
 task stopDockerCompose(type: Exec) {
