@@ -14,12 +14,12 @@ task compileAndTest(type: GradleBuild) {
 
 task runDockerCompose(type: Exec, dependsOn: compileAndTest) {
     workingDir '.'
-    commandLine '/var/jenkins_home/docker-compose', 'up', '-d'
+    commandLine 'docker-compose', 'up', '-d'
 }
 
 task stopDockerCompose(type: Exec) {
     workingDir '.'
-    commandLine '/var/jenkins_home/docker-compose', 'stop'
+    commandLine 'docker-compose', 'stop'
 }
 
 task deploy {
