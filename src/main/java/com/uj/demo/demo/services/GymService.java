@@ -24,7 +24,6 @@ public class GymService {
     }
 
     public Club addGym(Club club) {
-        System.out.println("im am a superman");
         return gymRepository.save(club);
     }
 }
