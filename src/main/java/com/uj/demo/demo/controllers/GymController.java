@@ -28,6 +28,7 @@ public class GymController {
 
     @PostMapping()
     public Club addGym(@RequestBody @Valid Club club) {
+        System.out.println("Terminator: i need your clothes and bike.");
         return gymService.addGym(club);
     }
 }
