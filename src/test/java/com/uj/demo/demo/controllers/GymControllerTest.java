@@ -57,7 +57,7 @@ class GymControllerTest {
 
         int result = calculatorSpy.add(3, 7);
 
-        assertEquals(1, result);
+        assertEquals(10, result);
         verify(calculatorSpy).add(3, 7);
     }
 }
