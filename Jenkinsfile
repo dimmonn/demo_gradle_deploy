@@ -2,6 +2,14 @@ pipeline {
     agent any
 
     stages {
+
+        stage('Clean') {
+            steps {
+                // Checkout the code from your version control system
+                sh './gradlew stop'
+            }
+        }
+
         stage('Checkout') {
             steps {
                 // Checkout the code from your version control system
