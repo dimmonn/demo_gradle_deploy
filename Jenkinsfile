@@ -9,6 +9,25 @@ pipeline {
                 checkout scm
             }
         }
+
+        stage('Build') {
+            steps {
+                sh './gradlew build'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh './gradlew test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Run Gradle deploy task (replace 'deploy' with your actual deploy task)
+                sh './gradlew deploy'
+            }
+        }
     }
 
     post {
