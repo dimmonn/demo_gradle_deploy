@@ -12,20 +12,20 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh -c 'gradle build'
+                gradle build
             }
         }
 
         stage('Test') {
             steps {
-                sh -c 'gradle test'
+                gradle test
             }
         }
 
         stage('Deploy') {
             steps {
                 // Run Gradle deploy task (replace 'deploy' with your actual deploy task)
-                sh -c 'gradle deploy'
+                gradle deploy
             }
         }
     }
