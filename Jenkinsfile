@@ -12,20 +12,20 @@ pipeline {
 
         stage('Build') {
             steps {
-                gradle build
+                ./gradle build
             }
         }
 
         stage('Test') {
             steps {
-                gradle test
+                ./gradle test
             }
         }
 
         stage('Deploy') {
             steps {
                 // Run Gradle deploy task (replace 'deploy' with your actual deploy task)
-                gradle deploy
+                ./gradle deploy
             }
         }
     }
