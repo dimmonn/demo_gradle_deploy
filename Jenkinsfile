@@ -12,20 +12,20 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "./gradle build"
+                sh "./gradlew build"
             }
         }
 
         stage('Test') {
             steps {
-                sh "./gradle test"
+                sh "./gradlew test"
             }
         }
 
         stage('Deploy') {
             steps {
-                // Run ./gradle deploy task (replace 'deploy' with your actual deploy task)
-                sh "./gradle deploy"
+                // Run ./gradlew deploy task (replace 'deploy' with your actual deploy task)
+                sh "./gradlew deploy"
             }
         }
     }
